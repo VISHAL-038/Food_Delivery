@@ -35,6 +35,7 @@ const Login = () => {
   };
 
   return (
+    <div className="container-fluid" style={{ backgroundImage: "url('https://thumbs.dreamstime.com/b/ingredients-cooking-herbs-spices-black-stone-table-top-view-food-background-above-109114366.jpg')", backgroundSize: "cover", backgroundPosition: "center", minHeight: "100vh" }}>
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4">
         <h3 className="text-center mb-4">
@@ -81,6 +82,7 @@ const Login = () => {
           </Link>
         </form>
       </div>
+    </div>
     </div>
   );
 };

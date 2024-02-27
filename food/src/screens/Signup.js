@@ -35,7 +35,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="container-fluid" style={{ background: "" }}>
+    <div className="container-fluid" style={{ backgroundImage: "url('https://thumbs.dreamstime.com/b/ingredients-cooking-herbs-spices-black-stone-table-top-view-food-background-above-109114366.jpg')", backgroundSize: "cover", backgroundPosition: "center", minHeight: "100vh" }}>
       <div className="row justify-content-center align-items-center vh-100">
         <div className="col-md-6">
           <div className="card">
