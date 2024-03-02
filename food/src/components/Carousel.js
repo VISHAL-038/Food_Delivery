@@ -6,10 +6,11 @@ const Carousel = () => {
       <div
         id="carouselExampleFade"
         className="carousel slide carousel-fade"
-        data-bs-ride="carousel" style={{objectFit:"contain !important"}}
+        data-bs-ride="carousel"
+        style={{ objectFit: "contain !important" }}
       >
-        <div className="carousel-inner" id="carousel" style={{objectFit:"contain !important"}}>
-          <div className="carousel-caption d-none d-md-block" style={{zIndex:"10"}}>
+        <div className="carousel-inner" id="carousel" style={{ objectFit: "contain !important" }}>
+          <div className="carousel-caption d-none d-md-block" style={{ zIndex: "10" }}>
             <form className="d-flex">
               <input
                 className="form-control me-2"
@@ -47,6 +48,14 @@ const Carousel = () => {
               alt="..."
             />
           </div>
+          <div className="carousel-item">
+            <img
+              src="https://source.unsplash.com/random/900x700/?pasta"
+              className="d-block w-100"
+              style={{ filter: "brightness(30%)" }}
+              alt="..."
+            />
+          </div>
         </div>
         <button
           className="carousel-control-prev"
@@ -54,10 +63,7 @@ const Carousel = () => {
           data-bs-target="#carouselExampleFade"
           data-bs-slide="prev"
         >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
@@ -66,10 +72,7 @@ const Carousel = () => {
           data-bs-target="#carouselExampleFade"
           data-bs-slide="next"
         >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
