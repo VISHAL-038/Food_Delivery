@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const isLoggedIn = !!localStorage.getItem("authToken");
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("authtoken"));
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem("authtoken"));
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("authtoken");
+    setIsLoggedIn(false);
     navigate("/login");
   };
 
@@ -44,10 +49,10 @@ const Navbar = () => {
               {isLoggedIn && (
                 <li className="nav-item">
                   <Link
-                    className="nav-link active fs-5 btn bg-white text-success mx-1 rounded-pill"
-                    to="#"
+                    className=""
+                    to="/cart"
                   >
-                    My Orders
+                    
                   </Link>
                 </li>
               )}
@@ -76,7 +81,7 @@ const Navbar = () => {
                   My Cart
                 </Link>
                 <div
-                  className="btn bg-white text-success mx-2"
+                  className="btn bg-white text-success mx-2 rounded-pill"
                   onClick={handleLogout}
                 >
                   LogOut

@@ -48,13 +48,14 @@ router.post(
     let email = req.body.email;
     try {
         let userData = await User.findOne({ email: email });
-      if (!userData) {
-        return res
-          .status(400)
-          .json({ errors: "Try login with correct credentials" });
+        if (!userData) {
+          return res
+            .status(400)
+            .json({ errors: "Try login with correct credentials" });
       }
 
-      if (req.body.password !== userData.password) {
+      const isMatch = await bcrypt.compare(req.body.password, userData.password);
+      if (!isMatch) {
         return res
           .status(400)
           .json({ errors: "Try login with correct credentials" });

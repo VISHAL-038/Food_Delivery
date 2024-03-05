@@ -1,7 +1,10 @@
+// Import React, useState, Link, and useNavigate
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+// Define the Login component
 const Login = () => {
+  // Define state variables for email, password, error message, loading state, and navigate function
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -10,6 +13,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Define a function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -27,7 +31,7 @@ const Login = () => {
       const json = await response.json();
       console.log(json);
       if (!json.success) {
-        setError("Invalid credentials");
+        setError(json.errors || "Invalid credentials");
       } else {
         setError("");
         localStorage.setItem("authtoken", json.token);
@@ -41,10 +45,12 @@ const Login = () => {
     }
   };
 
+  // Define a function to handle input changes
   const onChange = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
+  // Return the JSX for the Login component
   return (
     <div
       className="container-fluid"
@@ -76,6 +82,7 @@ const Login = () => {
                 name="email"
                 value={credentials.email}
                 onChange={onChange}
+                required
               />
               <div id="emailHelp" className="form-text">
                 We'll never share your email with anyone else.
@@ -92,6 +99,7 @@ const Login = () => {
                 name="password"
                 value={credentials.password}
                 onChange={onChange}
+                required
               />
             </div>
             {error && <div className="alert alert-danger">{error}</div>}
@@ -108,4 +116,5 @@ const Login = () => {
   );
 };
 
+// Export the Login component
 export default Login;

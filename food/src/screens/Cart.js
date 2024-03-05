@@ -1,27 +1,33 @@
+// Cart component (updated)
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { useCart } from "../components/ContextReducer";
 
 const Cart = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const cartItems = useCart();
 
   const removeFromCart = (itemId) => {
-    setSelectedItems(selectedItems.filter((item) => item.id !== itemId));
+    // Implement logic to remove item from cart
   };
 
   return (
     <div>
+      <Navbar />
       <h1>Cart</h1>
-      {selectedItems.length === 0 ? (
+      {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         <ul>
-          {selectedItems.map((item) => (
-            <li key={item.id}>
-              {item.name} - Quantity: {item.quantity}
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+          {cartItems.map((cartItem) => (
+            <li key={cartItem.id}>
+              {cartItem.name} - Quantity: {cartItem.quantity}
+              <button onClick={() => removeFromCart(cartItem.id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
+      <Footer />
     </div>
   );
 };
