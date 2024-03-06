@@ -10,8 +10,6 @@ const Card = () => {
   const [qty,setQty] = useState(1);
   const [size,setSize] = useState("");
 
-
-
   const handleAddToCart = async (item) => {
     const selectedItem = selectedItems[item.id];
     if (!selectedItem) {
@@ -23,13 +21,13 @@ const Card = () => {
     console.log(data);
   }
   
-  
   const handleChange = (itemId, quantity, portion) => {
-    setSelectedItems({ ...selectedItems, [itemId]: { quantity, portion } });
+    setSelectedItems((prevSelectedItems) => ({
+      ...prevSelectedItems,
+      [itemId]: { quantity, portion },
+    }));
   };
-  
 
-  
   const getTotalPrice = (item) => {
     const selected = selectedItems[item.id];
     if (!selected) return 0;
